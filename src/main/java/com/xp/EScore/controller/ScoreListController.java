@@ -18,11 +18,13 @@ public class ScoreListController {
      * @return
      */
     @ResponseBody
-    @RequestMapping(method=RequestMethod.GET,value="/gradelist")
+    @RequestMapping(method = RequestMethod.GET, value = "/scorelist")
     public ResponseResult<Object> queryScoreList(@RequestParam Integer classId,
-        @RequestParam String examDate,@RequestParam(required = false) Integer distant){
+            @RequestParam String examDate,
+            @RequestParam(required = false) Integer distant) {
         ResponseResult<Object> result = new ResponseResult<>();
-        
+
         return result;
     }
+
 }
