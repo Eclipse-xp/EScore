@@ -16,14 +16,14 @@
 		init-method="init" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url">
-			<value>${jdbc.url}</value>
+			<value>jdbc:mysql://localhost:3306/EScore?useUnicode=true&amp;characterEncoding=UTF-8</value>
 		</property>
-		<property name="username" value="${jdbc.user}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
 		<!-- 配置初始化大小、最小、最大 -->
-		<property name="initialSize" value="${jdbc.initialSize}" />
-		<property name="minIdle" value="${jdbc.minIdle}" />
-		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="initialSize" value="20" />
+		<property name="minIdle" value="20" />
+		<property name="maxActive" value="100" />
 		<!-- 配置获取连接等待超时的时间 -->
 		<property name="maxWait" value="10000" />
 		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->

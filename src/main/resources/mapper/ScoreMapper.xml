@@ -5,7 +5,12 @@
 	<resultMap id="BaseResultMap" type="com.xp.EScore.po.Score" >
 	</resultMap>
 	<select id="queryList" resultType="map" >
-		SELECT * FROM score
-		 WHERE class_id=#{classId} and examDate=#{examDate}
+		SELECT * FROM score 
+		 WHERE examDate=#{examDate}
+		  AND student_id in (
+		   SELECT id FROM student
+		    WHERE class_id=#{classId}
+		 )
+		 <!-- WHERE class_id=#{classId} and examDate=#{examDate} -->
 	</select>
 </mapper>

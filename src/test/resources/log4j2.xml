@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="180" packages="com.xp.EScore">
+	<properties>
+		<property name="PATTERN">%-5level^|%d{ISO8601}^|EScore^|%loginfo%n
+		</property>
+		<property name="CONSOLE_PATTERN">%d{HH:mm:ss,SSS} %-5level [%class.%method] (%t) %msg%n
+		</property>
+	</properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${CONSOLE_PATTERN}" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<!--OFF 0 -->
+		<!--FATAL 100 -->
+		<!--ERROR 200 -->
+		<!--WARN 300 -->
+		<!--INFO 400 -->
+		<!--DEBUG 500 -->
+		<!--TRACE 600 -->
+		<!--ALL Integer.MAX_VALUE -->
+		<Root level="INFO" includeLocation="true">
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
