@@ -1,7 +1,7 @@
 window.onload=function(){
 	// register the grid component
 	Vue.component('demo-grid', {
-	  template: '#grid-template',
+	  el: 'grid-template',
 	  props: {
 	    data: Array,
 	    columns: Array,
@@ -14,10 +14,14 @@ window.onload=function(){
 	    })
 	    return {
 	      sortKey: '',
-	      sortOrders: sortOrders
+	      sortOrders: sortOrders,
+	      columnMap:{
+	    	  name: "姓名",
+	    	  power: "分数"
+	      }
 	    }
 	  },
-	  computed: {
+	  computed: {//计算属性（使用缓存）
 	    filteredData: function () {
 	      var sortKey = this.sortKey
 	      var filterKey = this.filterKey && this.filterKey.toLowerCase()
@@ -40,12 +44,22 @@ window.onload=function(){
 	      return data
 	    }
 	  },
-	  filters: {
+	  filters: {//可用作文本格式化
 	    capitalize: function (str) {
-	      return str.charAt(0).toUpperCase() + str.slice(1)
+	    	var columnMap={
+	    			name: "姓名",
+	    			class_rank: "班级名次",
+	    			math:"数学",
+	    			chinese:"语文",
+	    			english:"英语",
+	    			physics:"物理",
+	    			chemistry:"化学",
+	    			biology:"生物"
+	    	}
+	    	return columnMap[str]
 	    }
 	  },
-	  methods: {
+	  methods: {//每次都从新渲染
 	    sortBy: function (key) {
 	      this.sortKey = key
 	      this.sortOrders[key] = this.sortOrders[key] * -1
@@ -58,13 +72,20 @@ window.onload=function(){
 	  el: '#demo',
 	  data: {
 	    searchQuery: '',
-	    gridColumns: ['name', 'power'],
-	    gridData: [
-	      { name: 'Chuck Norris', power: Infinity },
-	      { name: 'Bruce Lee', power: 9000 },
-	      { name: 'Jackie Chan', power: 7000 },
-	      { name: 'Jet Li', power: 8000 }
-	    ]
-	  }
+	    gridColumns: ['name', 'class_rank','math','chinese','english','physics','chemistry','biology'],
+	    gridData:[]
+	  },
+	  created: function(){
+		  var self = this;
+		  axios.get('score/list?classId=TSZ1506&examDate=2017-02-24')
+		  	.then(function(response){
+				scoreList = response.data.result.list;
+//				self.$set('gridData',scoreList);
+				self.gridData = scoreList;
+			})
+			.catch(function(error){
+				alert(error);
+			});
+	   }
 	});
 };
