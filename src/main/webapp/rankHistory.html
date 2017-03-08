@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/highcharts/highcharts.js"></script>
+<!-- vue-highcharts should be load after Highcharts -->
+<script src="https://unpkg.com/vue-highcharts/dist/vue-highcharts.min.js"></script>
+
+<script type="text/javascript" src="./app/rankHistory.js"></script>
+<meta charset="UTF-8">
+<title>排名趋势图</title>
+</head>
+<body>
+	<div id="app">
+	  <highcharts :options="options" ref="highcharts"></highcharts>
+	  <!-- <button @click="updateCredits">update credits</button> -->
+	</div>
+</body>
+</html>

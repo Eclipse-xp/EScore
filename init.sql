@@ -97,4 +97,11 @@ INSERT INTO `score` VALUES ('8', 'TSZ150405017Q', '2017-02-24', '6', '6', '139.0
 INSERT INTO `score` VALUES ('9', 'TSZ150405018Q', '2017-02-24', '9', '9', '111.00', '119.00', '125.00', '99.00', '68.00', '66.00', null, null, null);
 INSERT INTO `score` VALUES ('10', 'TSZ150405019Q', '2017-02-24', '10', '10', '100.00', '100.00', '90.00', '130.00', '60.00', '40.00', null, null, null);
 
+INSERT INTO `score` VALUES ( null,'TSZ150405070Q', '2017-01-24', '2', '3', '140.00', '147.00', '148.00', '125.00', '87.00', '76.00', null, null, null);
+INSERT INTO `score` VALUES ( null,'TSZ150405070Q', '2016-12-24', '5', '5', '146.00', '147.00', '149.00', '120.00', '80.00', '66.00', null, null, null);
+INSERT INTO `score` VALUES ( null,'TSZ150405070Q', '2016-11-24', '3', '3', '147.00', '146.00', '149.00', '129.00', '89.00', '79.00', null, null, null);
+INSERT INTO `score` VALUES ( null,'TSZ150405070Q', '2016-10-24', '25', '40', '117.00', '116.00', '119.00', '109.00', '69.00', '69.00', null, null, null);
+INSERT INTO `score` VALUES ( null,'TSZ150405070Q', '2016-11-24', '4', '7', '140.00', '145.00', '148.00', '119.00', '79.00', '79.00', null, null, null);
+INSERT INTO `score` VALUES ( null,'TSZ150405070Q', '2016-11-24', '11', '15', '127.00', '136.00', '139.00', '119.00', '79.00', '70.00', null, null, null);
+
 INSERT INTO `teacher` VALUES ('1001', 'TSZ1506', 'Ðì»Û', 'Å®', null, null, null, null, null, null);
