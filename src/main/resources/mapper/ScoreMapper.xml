@@ -16,4 +16,10 @@
 		 		ON a.student_id=student.id
 		 <!-- WHERE class_id=#{classId} and examDate=#{examDate} -->
 	</select>
+	
+	<select id="queryClassRankList" resultType="map" >
+		SELECT examDate,class_rank 
+		FROM score
+		WHERE student_id=#{studentId}
+	</select>
 </mapper>

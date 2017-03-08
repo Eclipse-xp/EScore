@@ -18,6 +18,7 @@
         expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	
+	<import resource="classpath:spring/spring-servlet.xml" />
 	<import resource="classpath:spring/spring-dao.xml" />
 	
 	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">

@@ -28,4 +28,12 @@ public class ScoreService {
         return m;
     }
 
+    public Map<String, Object> queryClassRankHistory(String studentId) {
+        Map<String, Object> m = new HashMap<>();
+        List<Map<String, Object>> list = this.scoreMapper
+            .queryClassRankList(studentId);
+        m.put("list", list);
+        return m;
+    }
+
 }

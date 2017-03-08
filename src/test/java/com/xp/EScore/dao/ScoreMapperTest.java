@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ScoreMapperTest extends TestBase {
     @Autowired
     private ScoreMapper scoreMapper;
 
+    private static final Logger logger = LogManager
+        .getLogger(ScoreMapperTest.class.getName());
+
     @Test
     public void queryList() throws ParseException {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -25,11 +30,21 @@ public class ScoreMapperTest extends TestBase {
         try {
             List<Map<String, Object>> result = this.scoreMapper.queryList(
                 examDate, classId);
-            Assert.assertTrue(result.toString(), !result.isEmpty());
+            logger.info(result.toString());
+            Assert.assertTrue("queryList Ê§°Ü", !result.isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    public void queryClassRankList() {
+        String studentId = "TSZ150405070Q";
+        List<Map<String, Object>> result = this.scoreMapper
+            .queryClassRankList(studentId);
+        logger.info(result.toString());
+        Assert.assertTrue("queryClassRankList Ê§°Ü", !result.isEmpty());
     }
 
 }

@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.xp.EScore.common.bean.ResponseResult;
 import com.xp.EScore.service.ScoreService;
 
+/**
+ * @author xiexiangpeng
+ */
+
 @Controller
 @RequestMapping("/score")
 public class ScoreController {
@@ -33,6 +37,19 @@ public class ScoreController {
             @RequestParam(required = false) Integer distant) {
         ResponseResult<Object> result = new ResponseResult<>();
         result.setResult(this.scoreService.queryList(examDate, classId));
+        return result;
+    }
+
+    /**
+     * @param studentId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/rankHistory")
+    public ResponseResult<Object> queryRankHistory(
+            @RequestParam String studentId) {
+        ResponseResult<Object> result = new ResponseResult<>();
+        result.setResult(this.scoreService.queryClassRankHistory(studentId));
         return result;
     }
 
