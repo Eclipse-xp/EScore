@@ -37,7 +37,7 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr v-for="entry in filteredData">
+	      <tr v-for="entry in filteredData" @click="toRankHistory(entry)">
 	        <td v-for="key in columns">
 	          {{entry[key]}}
 	        </td>

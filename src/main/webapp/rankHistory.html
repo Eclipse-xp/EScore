@@ -7,14 +7,15 @@
 <!-- vue-highcharts should be load after Highcharts -->
 <script src="https://unpkg.com/vue-highcharts/dist/vue-highcharts.min.js"></script>
 
+<script type="text/javascript" src="./app/util.js"></script>
 <script type="text/javascript" src="./app/rankHistory.js"></script>
+
 <meta charset="UTF-8">
 <title>排名趋势图</title>
 </head>
 <body>
 	<div id="app">
 	  <highcharts :options="options" ref="highcharts"></highcharts>
-	  <!-- <button @click="updateCredits">update credits</button> -->
 	</div>
 </body>
 </html>

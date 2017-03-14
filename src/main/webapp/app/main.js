@@ -10,7 +10,7 @@ window.onload=function(){
 	  data: function () {
 	    var sortOrders = {}
 	    this.columns.forEach(function (key) {
-	      sortOrders[key] = 1
+	      sortOrders[key] = 1;
 	    })
 	    return {
 	      sortKey: '',
@@ -23,22 +23,22 @@ window.onload=function(){
 	  },
 	  computed: {//计算属性（使用缓存）
 	    filteredData: function () {
-	      var sortKey = this.sortKey
-	      var filterKey = this.filterKey && this.filterKey.toLowerCase()
-	      var order = this.sortOrders[sortKey] || 1
-	      var data = this.data
+	      var sortKey = this.sortKey;
+	      var filterKey = this.filterKey && this.filterKey.toLowerCase();
+	      var order = this.sortOrders[sortKey] || 1;
+	      var data = this.data;
 	      if (filterKey) {
 	        data = data.filter(function (row) {
 	          return Object.keys(row).some(function (key) {
-	            return String(row[key]).toLowerCase().indexOf(filterKey) > -1
+	            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
 	          })
 	        })
 	      }
 	      if (sortKey) {
 	        data = data.slice().sort(function (a, b) {
-	          a = a[sortKey]
-	          b = b[sortKey]
-	          return (a === b ? 0 : a > b ? 1 : -1) * order
+	          a = a[sortKey];
+	          b = b[sortKey];
+	          return (a === b ? 0 : a > b ? 1 : -1) * order;
 	        })
 	      }
 	      return data
@@ -61,8 +61,11 @@ window.onload=function(){
 	  },
 	  methods: {//每次都从新渲染
 	    sortBy: function (key) {
-	      this.sortKey = key
-	      this.sortOrders[key] = this.sortOrders[key] * -1
+	      this.sortKey = key;
+	      this.sortOrders[key] = this.sortOrders[key] * -1;
+	    },
+	    toRankHistory: function(entry){
+	    	location.href = "rankHistory.html?studentId="+entry["student_id"];
 	    }
 	  }
 	});
@@ -86,6 +89,9 @@ window.onload=function(){
 			.catch(function(error){
 				alert(error);
 			});
+	   },
+	   methods:{
+		   
 	   }
 	});
 };
