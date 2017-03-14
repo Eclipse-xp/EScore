@@ -46,7 +46,9 @@ window.onload = function(){
 	  },
 	  beforeCreate:function(){
 //		  var self = this;
-		  axios.get('score/rankHistory?studentId=TSZ150405070Q')
+		  var request = getRequest();
+		  var studentId = request['studentId'];
+		  axios.get('score/rankHistory?studentId=' + studentId)
 		  	.then(function(response){
 				rankHistory = response.data.result.list;
 				var rankArray = [];
@@ -63,14 +65,7 @@ window.onload = function(){
 			});
 	  },
 	  methods: {
-	  	updateCredits: function() {
-	    	var chart = this.$refs.highcharts.chart;
-	      chart.credits.update({
-	        style: {
-	          color: '#' + (Math.random() * 0xffffff | 0).toString(16)
-	        }
-	      });
-	    }
+	  	
 	  }
 	});
 
