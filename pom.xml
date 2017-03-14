@@ -9,6 +9,22 @@
 	<url>http://maven.apache.org</url>
 	<build>
 		<finalName>EScore</finalName>
+		<plugins>
+			<!-- Jetty -->
+			<plugin>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>9.2.12.v20150709</version>
+				<configuration>
+					<stopPort>8899</stopPort>
+					<stopKey>foo</stopKey>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/EScore</contextPath>
+					</webApp>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 	<properties>
 		<version.spring>4.2.2.RELEASE</version.spring>
