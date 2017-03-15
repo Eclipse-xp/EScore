@@ -30,7 +30,12 @@ window.onload=function(){
 	      if (filterKey) {
 	        data = data.filter(function (row) {
 	          return Object.keys(row).some(function (key) {
-	            return String(row[key]).toLowerCase().indexOf(filterKey) > -1;
+	        	var keyArray = filterKey.split(" ");
+	        	var flag = false;
+	        	keyArray.forEach(function(item,index,array){
+	        		flag = flag || String(row[key]).toLowerCase().indexOf(item) > -1;
+				});
+	            return flag;
 	          })
 	        })
 	      }
