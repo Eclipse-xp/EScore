@@ -69,8 +69,10 @@ window.onload=function(){
 	      this.sortKey = key;
 	      this.sortOrders[key] = this.sortOrders[key] * -1;
 	    },
-	    toRankHistory: function(entry){
-	    	location.href = "rankHistory.html?studentId="+entry["student_id"];
+	    toRankHistory: function(entry,key){
+	    	if(key === "name"){
+	    		location.href = "rankHistory.html?studentId="+entry["student_id"];
+	    	}
 	    }
 	  }
 	});

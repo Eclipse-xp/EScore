@@ -14,7 +14,7 @@
 <!-- demo root element -->
 	<div id="demo">
 	  <form id="search">
-	    搜索： <input name="query" v-model="searchQuery" placeholder="按姓名搜索">
+	   <input name="query" v-model="searchQuery" placeholder="按姓名搜索">
 	  </form>
 	  <demo-grid
 	    :data="gridData"
@@ -37,9 +37,14 @@
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr v-for="entry in filteredData" @click="toRankHistory(entry)">
-	        <td v-for="key in columns">
-	          {{entry[key]}}
+	      <tr v-for="entry in filteredData">
+	        <td v-for="key in columns" @click="toRankHistory(entry,key)">
+	        	<span title="点击查看过往成绩" style="cursor:pointer" v-if="key==='name'">
+	        		{{entry[key]}}
+	        	</span>
+	        	<span v-else>
+	        		{{entry[key]}}
+	        	</span>
 	        </td>
 	      </tr>
 	    </tbody>
