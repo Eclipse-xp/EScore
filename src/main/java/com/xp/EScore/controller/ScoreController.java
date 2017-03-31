@@ -25,6 +25,8 @@ public class ScoreController {
     private ScoreService scoreService;
 
     /**
+     * 获取成绩单接口
+     * 
      * @param classId
      * @param examDate
      * @param distant
@@ -41,15 +43,17 @@ public class ScoreController {
     }
 
     /**
+     * 获取历次考试成绩接口
+     * 
      * @param studentId
      * @return
      */
     @ResponseBody
     @RequestMapping(method = RequestMethod.GET, value = "/rankHistory")
     public ResponseResult<Object> queryRankHistory(
-            @RequestParam String studentId) {
+            @RequestParam String... studentIds) {
         ResponseResult<Object> result = new ResponseResult<>();
-        result.setResult(this.scoreService.queryClassRankHistory(studentId));
+        result.setResult(this.scoreService.queryClassRankHistory(studentIds));
         return result;
     }
 

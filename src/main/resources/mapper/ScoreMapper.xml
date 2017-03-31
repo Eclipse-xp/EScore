@@ -19,7 +19,13 @@
 	
 	<select id="queryClassRankList" resultType="map" >
 		SELECT examDate,class_rank 
-		FROM score
-		WHERE student_id=#{studentId} ORDER BY examDate ASC
+			FROM score
+			WHERE student_id=#{studentId} ORDER BY examDate ASC		
+		<!-- WHERE student_id in 
+		<foreach collection="sdudentIds" index="index" item="sdudentId" open="(" separator="," close=")">
+			#{sdudentId}
+		</foreach>
+		GROUP BY student_id 
+		ORDER BY examDate ASC -->
 	</select>
 </mapper>
