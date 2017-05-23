@@ -32,7 +32,7 @@ public class ScoreControllerTest extends TestBase {
             classId, examDate, null);
         JSONObject json = (JSONObject) JSON.toJSON(obj);
         logger.info(json.toString());
-        Assert.assertTrue("queryScoreList Ê§°Ü", json != null && !json.isEmpty());
+        Assert.assertTrue("queryScoreList :", json != null && !json.isEmpty());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ScoreControllerTest extends TestBase {
             .queryRankHistory(studentId);
         JSONObject json = (JSONObject) JSON.toJSON(obj);
         logger.info(json.toString());
-        Assert.assertTrue("queryRankHistory Ê§°Ü",
+        Assert.assertTrue("queryRankHistory :",
             json != null && !json.isEmpty());
     }
 

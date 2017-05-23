@@ -31,7 +31,7 @@ public class ScoreMapperTest extends TestBase {
             List<Map<String, Object>> result = this.scoreMapper.queryList(
                 examDate, classId);
             logger.info(result.toString());
-            Assert.assertTrue("queryList Ê§°Ü", !result.isEmpty());
+            Assert.assertTrue("queryList :", !result.isEmpty());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,7 +44,7 @@ public class ScoreMapperTest extends TestBase {
         List<Map<String, Object>> result = this.scoreMapper
             .queryClassRankList(studentId);
         logger.info(result.toString());
-        Assert.assertTrue("queryClassRankList Ê§°Ü", !result.isEmpty());
+        Assert.assertTrue("queryClassRankList :", !result.isEmpty());
     }
 
 }

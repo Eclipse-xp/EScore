@@ -25,7 +25,7 @@ public class ScoreController {
     private ScoreService scoreService;
 
     /**
-     * »ñÈ¡³É¼¨µ¥½Ó¿Ú
+     * è·å–æˆç»©å•
      * 
      * @param classId
      * @param examDate
@@ -43,9 +43,9 @@ public class ScoreController {
     }
 
     /**
-     * »ñÈ¡Àú´Î¿¼ÊÔ³É¼¨½Ó¿Ú
+     * è·å–å¤šä½åŒå­¦æˆç»©è®°å½•
      * 
-     * @param studentId
+     * @param studentIds
      * @return
      */
     @ResponseBody
