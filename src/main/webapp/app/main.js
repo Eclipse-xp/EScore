@@ -71,7 +71,7 @@ window.onload=function(){
 	    },
 	    toRankHistory: function(entry,key){
 	    	if(key === "name"){
-	    		location.href = "rankHistory.html?studentId="+entry["student_id"];
+	    		location.href = "rankHistory.html?studentIds="+entry["student_id"];
 	    	}
 	    }
 	  }

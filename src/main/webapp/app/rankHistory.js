@@ -47,18 +47,25 @@ window.onload = function(){
 	  beforeCreate:function(){
 //		  var self = this;
 		  var request = getRequest();
-		  var studentId = request['studentId'];
-		  axios.get('score/rankHistory?studentId=' + studentId)
+		  var studentId = request['studentIds'];
+		  axios.get('score/rankHistory?studentIds=' + studentId)
 		  	.then(function(response){
-				rankHistory = response.data.result.list;
-				var rankArray = [];
-				var dateArray = [];
-				rankHistory.forEach(function(item,index,array){
-					rankArray.push(item.class_rank);
-					dateArray.push(item.examDate);
+				rankHistory = response.data.result.list;//all history(maybe include many guys)
+				rankHistory.forEach(function(personData,index,array){//data of each man include {name:"",history[{class_rank:"",examDate:""},...]}
+					var rankArray = [];
+					var dateArray = [];
+					options.series[index].name = personData.name;
+					personData.history.forEach(function(item,hindex,array2){//prepare line configuration for one person
+						rankArray.push(item.class_rank);
+						if (index === 0) {
+							dateArray.push(item.examDate);
+						}
+					});
+					options.series[index].data = rankArray;
+					if (index === 0) {
+						options.xAxis.categories = dateArray;
+					}
 				});
-				options.series[0].data = rankArray;
-				options.xAxis.categories = dateArray;
 			})
 			.catch(function(error){
 				alert(error);
