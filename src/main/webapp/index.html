@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>EScore</title>
+
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <!-- <script src="http://code.jquery.com/jquery-1.4.1.min.js"></script> -->
@@ -12,10 +16,29 @@
 <body>
 
 <!-- demo root element -->
+<script type="text/javascript">
+var test = function(){
+	alert("test");
+}
+</script>
 	<div id="demo">
-	  <form id="search">
-	   <input name="query" v-model="searchQuery" placeholder="按姓名搜索">
-	  </form>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="container-fluid">
+			    <div class="navbar-header">
+			        <a class="navbar-brand" href="#">EScore</a>
+			    </div>
+			    <div>
+			        <form class="navbar-form navbar-left" role="search" id="search">
+			            <div class="form-group">
+			                <input type="text" class="form-control" name="query" v-model="searchQuery" placeholder="按姓名搜索">
+			            </div>
+			            
+			        </form>
+			        <!-- <input type="button" class="btn btn-default navbar-btn" onclick="test()" value="test"> -->
+			        <button type="button" class="btn btn-default navbar-btn" @click="compareThem()">PK</button>
+			    </div>
+			</div>
+		</nav>
 	  <demo-grid
 	    :data="gridData"
 	    :columns="gridColumns"

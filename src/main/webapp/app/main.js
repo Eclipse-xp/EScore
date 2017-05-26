@@ -1,4 +1,6 @@
 window.onload=function(){
+	
+	var idPool = [];//cache the student ids that have been filtered
 	// register the grid component
 	Vue.component('demo-grid', {
 	  el: 'grid-template',
@@ -21,13 +23,14 @@ window.onload=function(){
 	      }
 	    }
 	  },
-	  computed: {//计算属性（使用缓存）
+	  computed: {
 	    filteredData: function () {
-	      var sortKey = this.sortKey;
-	      var filterKey = this.filterKey && this.filterKey.toLowerCase();
-	      var order = this.sortOrders[sortKey] || 1;
-	      var data = this.data;
-	      if (filterKey) {
+	    	idPool = [];
+	      	var sortKey = this.sortKey;
+	      	var filterKey = this.filterKey && this.filterKey.toLowerCase();
+	      	var order = this.sortOrders[sortKey] || 1;
+	      	var data = this.data;
+	      	if (filterKey) {
 	        data = data.filter(function (row) {
 	          return Object.keys(row).some(function (key) {
 	        	var keyArray = filterKey.split(" ");
@@ -35,6 +38,9 @@ window.onload=function(){
 	        	keyArray.forEach(function(item,index,array){
 	        		flag = flag || String(row[key]).toLowerCase().indexOf(item) > -1;
 				});
+				if (flag) {
+					idPool.push(row["student_id"]);
+				}
 	            return flag;
 	          })
 	        })
@@ -49,7 +55,7 @@ window.onload=function(){
 	      return data
 	    }
 	  },
-	  filters: {//可用作文本格式化
+	  filters: {//may be used for text formatting
 	    capitalize: function (str) {
 	    	var columnMap={
 	    			name: "姓名",
@@ -64,7 +70,7 @@ window.onload=function(){
 	    	return columnMap[str]
 	    }
 	  },
-	  methods: {//每次都从新渲染
+	  methods: {//will rerender every time
 	    sortBy: function (key) {
 	      this.sortKey = key;
 	      this.sortOrders[key] = this.sortOrders[key] * -1;
@@ -98,7 +104,9 @@ window.onload=function(){
 			});
 	   },
 	   methods:{
-		   
+	   	compareThem: function(){
+	    	location.href = "rankHistory.html?studentIds="+idPool;
+	    }
 	   }
 	});
 };

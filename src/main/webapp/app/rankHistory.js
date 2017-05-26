@@ -33,10 +33,8 @@ window.onload = function(){
 	    verticalAlign: 'middle',
 	    borderWidth: 0
 	  },
-	  series: [{
-	    name: '班级排名',
-	    data: []
-	  }]
+	  series: []
+	  // series: new Array()
 	};
 
 	var vm = new Vue({
@@ -51,20 +49,20 @@ window.onload = function(){
 		  axios.get('score/rankHistory?studentIds=' + studentId)
 		  	.then(function(response){
 				rankHistory = response.data.result.list;//all history(maybe include many guys)
+				var xCategories = [];
 				rankHistory.forEach(function(personData,index,array){//data of each man include {name:"",history[{class_rank:"",examDate:""},...]}
 					var rankArray = [];
 					var dateArray = [];
+					options.series.push({});
 					options.series[index].name = personData.name;
+
 					personData.history.forEach(function(item,hindex,array2){//prepare line configuration for one person
-						rankArray.push(item.class_rank);
-						if (index === 0) {
-							dateArray.push(item.examDate);
-						}
+						rankArray.push(item.class_rank);					
+						dateArray.push(item.examDate);						
 					});
 					options.series[index].data = rankArray;
-					if (index === 0) {
-						options.xAxis.categories = dateArray;
-					}
+					xCategories = xCategories.length >= dateArray.length?xCategories:dateArray;
+					options.xAxis.categories = xCategories;
 				});
 			})
 			.catch(function(error){
