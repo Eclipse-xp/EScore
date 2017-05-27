@@ -47,4 +47,12 @@ public class ScoreMapperTest extends TestBase {
         Assert.assertTrue("queryClassRankList :", !result.isEmpty());
     }
 
+    @Test
+    public void queryExamOfClassByStudentId() {
+        String studentId = "TSZ150405070Q";
+        List<String> result = this.scoreMapper
+                .queryExamOfClassByStudentId(studentId);
+        logger.info(result.toString());
+        Assert.assertTrue("queryExamOfClassByStudentId :", !result.isEmpty());
+    }
 }

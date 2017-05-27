@@ -28,4 +28,18 @@
 		GROUP BY student_id 
 		ORDER BY examDate ASC -->
 	</select>
+
+	<select id="queryExamOfClassByStudentId" resultType="String">
+		SELECT DISTINCT examDate
+			FROM score
+			WHERE student_id IN (
+				SELECT id 
+					FROM student 
+					WHERE class_id = (
+						SELECT class_id 
+						FROM student
+						WHERE id = #{studentId}
+					)
+			)
+	</select>
 </mapper>

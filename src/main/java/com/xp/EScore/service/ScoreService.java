@@ -1,10 +1,6 @@
 package com.xp.EScore.service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,8 +30,14 @@ public class ScoreService {
     }
 
     public Map<String, Object> queryClassRankHistory(String... studentIds) {
-        Map<String, Object> m = new HashMap<>();
-        List<Object> resultList = new LinkedList<>();
+        if(studentIds == null || studentIds.length == 0){
+            return null;
+        }
+        Map<String, Object> m = new HashMap<String, Object>();
+        List<Object> resultList = new LinkedList<Object>();
+        //consider students in a same "class" only(to be improved)
+        List<String> examDateList = this.scoreMapper.queryExamOfClassByStudentId(studentIds[0]);
+
         for (String studentId : studentIds) {
             Map<String, Object> dataMap = new HashMap<>();
             List<Map<String, Object>> history = this.scoreMapper
