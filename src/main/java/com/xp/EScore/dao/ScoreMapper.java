@@ -22,5 +22,5 @@ public interface ScoreMapper {
     List<Map<String, Object>> queryClassRankList(
             @Param("studentId") String studentId);
 
-    List<String> queryExamOfClassByStudentId(@Param("studentId") String studentId);
+    List<Date> queryExamOfClassByStudentId(@Param("studentId") String studentId);
 }

@@ -29,15 +29,26 @@ public class ScoreService {
         return m;
     }
 
+    /**
+     *  notes:
+     *  1.if someone is absent in one or more exam,the result will have some mistakes
+     *  in webpage at X-axis,so we should handle the case.
+     *  (updete:don't need to handle this case,because if someone had an absence,he will got the last rank.
+     *  but,if we have a tansfer,the result will still show wrong at X-axis.
+     *  For a long consideration,I plan to handle it in the "Manage System" in the future.)
+     *  2.consider students in a same "class" only(to be improved to hold different classes)
+     *
+     * @param studentIds
+     * @return
+     *
+     */
     public Map<String, Object> queryClassRankHistory(String... studentIds) {
         if(studentIds == null || studentIds.length == 0){
             return null;
         }
         Map<String, Object> m = new HashMap<String, Object>();
         List<Object> resultList = new LinkedList<Object>();
-        //consider students in a same "class" only(to be improved)
-        List<String> examDateList = this.scoreMapper.queryExamOfClassByStudentId(studentIds[0]);
-
+//        List<Date> examDateList = this.scoreMapper.queryExamOfClassByStudentId(studentIds[0]);
         for (String studentId : studentIds) {
             Map<String, Object> dataMap = new HashMap<>();
             List<Map<String, Object>> history = this.scoreMapper
@@ -52,4 +63,10 @@ public class ScoreService {
         return m;
     }
 
+    public Map<String, Object> queryExamOfClassByStudentId(String studentId) {
+        Map<String, Object> m = new HashMap<>();
+        List<Date> examDateList = this.scoreMapper.queryExamOfClassByStudentId(studentId);
+        m.put("list", examDateList);
+        return m;
+    }
 }

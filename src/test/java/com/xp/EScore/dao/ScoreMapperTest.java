@@ -50,7 +50,7 @@ public class ScoreMapperTest extends TestBase {
     @Test
     public void queryExamOfClassByStudentId() {
         String studentId = "TSZ150405070Q";
-        List<String> result = this.scoreMapper
+        List<Date> result = this.scoreMapper
                 .queryExamOfClassByStudentId(studentId);
         logger.info(result.toString());
         Assert.assertTrue("queryExamOfClassByStudentId :", !result.isEmpty());

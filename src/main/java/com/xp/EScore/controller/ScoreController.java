@@ -57,4 +57,18 @@ public class ScoreController {
         return result;
     }
 
+    /**
+     * get Exam Date List by studentId
+     *
+     * @param studentId
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(method = RequestMethod.GET, value = "/examdate/list")
+    public ResponseResult<Object> queryExamDateList(
+            @RequestParam String studentId) {
+        ResponseResult<Object> result = new ResponseResult<>();
+        result.setResult(this.scoreService.queryExamOfClassByStudentId(studentId));
+        return result;
+    }
 }

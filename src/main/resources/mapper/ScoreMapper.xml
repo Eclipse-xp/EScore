@@ -29,7 +29,7 @@
 		ORDER BY examDate ASC -->
 	</select>
 
-	<select id="queryExamOfClassByStudentId" resultType="String">
+	<select id="queryExamOfClassByStudentId" resultType="Date">
 		SELECT DISTINCT examDate
 			FROM score
 			WHERE student_id IN (
@@ -41,5 +41,6 @@
 						WHERE id = #{studentId}
 					)
 			)
+			ORDER BY examDate ASC
 	</select>
 </mapper>
